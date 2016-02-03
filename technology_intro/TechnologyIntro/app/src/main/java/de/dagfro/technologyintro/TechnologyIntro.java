@@ -1,5 +1,7 @@
 package de.dagfro.technologyintro;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,23 +11,31 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class TechnologyIntro extends AppCompatActivity {
+public class TechnologyIntro extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_technology_intro);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    }
+
+    public void button1(View view){
+        Intent intent = new Intent(this, Task1Activity.class);
+        startActivity(intent);
+
+    }
+    public void button2(View view){
+        Intent intent = new Intent(this, Task1Activity.class);
+
+    }
+    public void button3(View view){
+        Intent intent = new Intent(this, Task1Activity.class);
+
+    }
+    public void button4(View view){
+        Intent intent = new Intent(this, Task1Activity.class);
+
     }
 
     @Override
