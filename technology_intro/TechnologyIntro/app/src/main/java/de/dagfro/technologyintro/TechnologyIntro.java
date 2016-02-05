@@ -26,7 +26,7 @@ public class TechnologyIntro extends Activity {
 
     }
     public void button2(View view){
-        Intent intent = new Intent(this, Task1Activity.class);
+        Intent intent = new Intent(this, Task2Activity.class);
 
     }
     public void button3(View view){
