@@ -13,26 +13,26 @@ import android.view.SurfaceView;
 /**
  * Created by dagfs on 03-Feb-16.
  */
-public class Task1View extends SurfaceView {
+public class Task4View extends SurfaceView {
     private Bitmap bmp;
     private SurfaceHolder holder;
-    private Task1Thread task1Thread;
+    private Task4Thread task4Thread;
     private int x = 0;
     private int xSpeed = 10;
 
-    public Task1View(Context context) {
+    public Task4View(Context context) {
         super(context);
-        task1Thread = new Task1Thread(this);
+        task4Thread = new Task4Thread(this);
         holder = getHolder();
         holder.addCallback(new SurfaceHolder.Callback() {
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
                 boolean retry = true;
-                task1Thread.setRunning(false);
+                task4Thread.setRunning(false);
                 while (retry) {
                     try {
-                        task1Thread.join();
+                        task4Thread.join();
                         retry = false;
                     } catch (InterruptedException e) {
                     }
@@ -41,8 +41,8 @@ public class Task1View extends SurfaceView {
 
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                task1Thread.setRunning(true);
-                task1Thread.start();
+                task4Thread.setRunning(true);
+                task4Thread.start();
             }
 
             @Override
@@ -52,7 +52,7 @@ public class Task1View extends SurfaceView {
         });
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.heli);
 
-        task1Thread.run();
+        task4Thread.run();
     }
 
     private Bitmap flip(Bitmap b)
@@ -77,7 +77,7 @@ public class Task1View extends SurfaceView {
                 bmp = flip(bmp);
             }
             x = x + xSpeed;
-            canvas.drawColor(Color.MAGENTA);
+            canvas.drawColor(Color.BLACK);
             canvas.drawBitmap(bmp, x, 10, null);
         }
 

@@ -185,7 +185,7 @@ public class Task2View extends SurfaceView {
 
             Matrix m = new Matrix();
 
-            canvas.drawColor(Color.BLACK);
+            canvas.drawColor(Color.MAGENTA);
             canvas.drawBitmap(bmp, x, y, null);
 
             Paint paint = new Paint();

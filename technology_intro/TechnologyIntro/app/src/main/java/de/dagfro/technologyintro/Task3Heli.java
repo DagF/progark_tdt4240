@@ -93,7 +93,6 @@ public class Task3Heli {
             Rect src = new Rect(srcX, srcY, (int)srcX + bmp.getWidth()/4, srcY + bmp.getHeight());
             Rect dst = new Rect(x, y, (int)x + bmp.getWidth()/4, y + bmp.getHeight());
             canvas.drawBitmap(bmp, src, dst, null);
-            System.out.println(src);
             currentFrame++;
         }
     }
@@ -134,8 +133,6 @@ public class Task3Heli {
                      else{
                          this.changeYDirection();
                          this.changeXDirection();
-                         System.out.println("1" + c);
-                         System.out.println("2" + re);
 
                      }
         }

@@ -63,7 +63,7 @@ public class Task3View extends SurfaceView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.BLACK);
+        canvas.drawColor(Color.MAGENTA);
         for(int i = 0; i < choppers.size(); i++){
             for( int j = 0; j < choppers.size(); j++){
                 if( i != j){
