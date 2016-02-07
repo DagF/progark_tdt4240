@@ -67,16 +67,19 @@ public class Task1View extends SurfaceView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (x >= getWidth() - bmp.getWidth()) {
-            xSpeed = -10;
-            bmp = flip(bmp);
+        if(canvas != null){
+            if (x >= getWidth() - bmp.getWidth()) {
+                xSpeed = -10;
+                bmp = flip(bmp);
+            }
+            if (x <= 0) {
+                xSpeed = 10;
+                bmp = flip(bmp);
+            }
+            x = x + xSpeed;
+            canvas.drawColor(Color.BLACK);
+            canvas.drawBitmap(bmp, x, 10, null);
         }
-        if (x <= 0) {
-            xSpeed = 10;
-            bmp = flip(bmp);
-        }
-        x = x + xSpeed;
-        canvas.drawColor(Color.BLACK);
-        canvas.drawBitmap(bmp, x, 10, null);
+
     }
 }

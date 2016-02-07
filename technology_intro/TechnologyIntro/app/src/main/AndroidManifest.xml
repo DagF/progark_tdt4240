@@ -21,5 +21,6 @@
         <activity android:name=".Task1Activity" />
         <activity android:name=".Task2Activity"></activity>
     </application>
+    <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
 
 </manifest>
