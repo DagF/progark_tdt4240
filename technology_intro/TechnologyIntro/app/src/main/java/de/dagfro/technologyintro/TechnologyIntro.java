@@ -31,7 +31,7 @@ public class TechnologyIntro extends Activity {
 
     }
     public void button3(View view){
-        Intent intent = new Intent(this, Task1Activity.class);
+        Intent intent = new Intent(this, Task3Activity.class);
         startActivity(intent);
 
     }

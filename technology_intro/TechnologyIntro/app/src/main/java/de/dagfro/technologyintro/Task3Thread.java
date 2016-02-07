@@ -7,10 +7,10 @@ import android.graphics.Canvas;
  */
 public class Task3Thread extends Thread{
     static final long FPS = 24;
-    private Task1View view;
+    private Task3View view;
     private boolean running = false;
 
-    public Task3Thread(Task1View view) {
+    public Task3Thread(Task3View view) {
         this.view = view;
     }
 
@@ -20,7 +20,7 @@ public class Task3Thread extends Thread{
 
     @Override
     public void run() {
-        long ticksPS = 1000 / FPS;
+        long ticksPS = 100;
         long startTime;
         long sleepTime;
         while (running) {

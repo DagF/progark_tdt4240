@@ -10,29 +10,30 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.util.ArrayList;
+
 /**
  * Created by dagfs on 03-Feb-16.
  */
 public class Task3View extends SurfaceView {
-    private Bitmap bmp;
+
     private SurfaceHolder holder;
-    private Task1Thread task1Thread;
-    private int x = 0;
-    private int xSpeed = 10;
+    private Task3Thread task3Thread;
+    private ArrayList<Task3Heli> choppers = new ArrayList<Task3Heli>();
 
     public Task3View(Context context) {
         super(context);
-        task1Thread = new Task1Thread(this);
+        task3Thread = new Task3Thread(this);
         holder = getHolder();
         holder.addCallback(new SurfaceHolder.Callback() {
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
                 boolean retry = true;
-                task1Thread.setRunning(false);
+                task3Thread.setRunning(false);
                 while (retry) {
                     try {
-                        task1Thread.join();
+                        task3Thread.join();
                         retry = false;
                     } catch (InterruptedException e) {
                     }
@@ -41,8 +42,8 @@ public class Task3View extends SurfaceView {
 
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                task1Thread.setRunning(true);
-                task1Thread.start();
+                task3Thread.setRunning(true);
+                task3Thread.start();
             }
 
             @Override
@@ -50,35 +51,21 @@ public class Task3View extends SurfaceView {
                                        int width, int height) {
             }
         });
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.heli);
 
-        task1Thread.run();
+        for(int i = 0; i < 3; i++){
+            choppers.add(new Task3Heli(context));
+        }
+
+        task3Thread.run();
     }
 
-    private Bitmap flip(Bitmap b)
-    {
-        Matrix m = new Matrix();
-        m.preScale(-1, 1);
-        Bitmap src = b;
-        Bitmap dst = Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(), m, false);
-        dst.setDensity(DisplayMetrics.DENSITY_DEFAULT);
-        return dst;
-    }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if(canvas != null){
-            if (x >= getWidth() - bmp.getWidth()) {
-                xSpeed = -10;
-                bmp = flip(bmp);
-            }
-            if (x <= 0) {
-                xSpeed = 10;
-                bmp = flip(bmp);
-            }
-            x = x + xSpeed;
-            canvas.drawColor(Color.BLACK);
-            canvas.drawBitmap(bmp, x, 10, null);
+        canvas.drawColor(Color.BLACK);
+        for(int i = 0; i < choppers.size(); i++){
+            choppers.get(i).draw(canvas);
         }
 
     }
