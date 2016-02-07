@@ -83,41 +83,15 @@ public class Task2View extends SurfaceView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        final int action = ev.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN: {
+
                 final float x = ev.getX();
                 final float y = ev.getY();
 
                 // Remember where we started
                 mLastTouchX = x;
                 mLastTouchY = y;
-                break;
-            }
 
-            case MotionEvent.ACTION_MOVE: {
-                final float x = ev.getX();
-                final float y = ev.getY();
-
-                // Calculate the distance moved
-                final float dx = x - mLastTouchX;
-                final float dy = y - mLastTouchY;
-
-                // Move the object
-                float mPosX = dx;
-                float mPosY = dy;
-
-                // Remember this touch position for the next move event
-                mLastTouchX = x;
-                mLastTouchY = y;
                 finger = new Point((int)mLastTouchX,(int)mLastTouchY);
-
-                // Invalidate to request a redraw
-                invalidate();
-                break;
-            }
-        }
-
         return true;
     }
 

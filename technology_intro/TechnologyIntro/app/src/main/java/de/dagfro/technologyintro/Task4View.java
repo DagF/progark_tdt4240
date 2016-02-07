@@ -50,7 +50,6 @@ public class Task4View extends SurfaceView {
                                        int width, int height) {
             }
         });
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.heli);
 
         task4Thread.run();
     }
