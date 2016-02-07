@@ -52,9 +52,9 @@ public class Task3View extends SurfaceView {
             }
         });
 
-        for(int i = 0; i < 3; i++){
-            choppers.add(new Task3Heli(context));
-        }
+        choppers.add(new Task3Heli(context,1,1));
+        choppers.add(new Task3Heli(context,200,200));
+        choppers.add(new Task3Heli(context,400,400));
 
         task3Thread.run();
     }
@@ -64,6 +64,14 @@ public class Task3View extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.BLACK);
+        for(int i = 0; i < choppers.size(); i++){
+            for( int j = 0; j < choppers.size(); j++){
+                if( i != j){
+
+                    choppers.get(i).collidesWidth(choppers.get(j));
+                }
+            }
+        }
         for(int i = 0; i < choppers.size(); i++){
             choppers.get(i).draw(canvas);
         }
