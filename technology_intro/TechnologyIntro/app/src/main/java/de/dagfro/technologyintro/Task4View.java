@@ -18,9 +18,13 @@ public class Task4View extends SurfaceView {
     private Task4Thread task4Thread;
     private Task4Game task4Game;
 
-    public Task4View(Context context) {
+    public void stop(){
+        this.task4Thread.setRunning(false);
+    }
+
+    public Task4View(Context context, Task4Activity task4Activity) {
         super(context);
-        task4Game = new Task4Game(context);
+        task4Game = new Task4Game(context, task4Activity, this);
         task4Thread = new Task4Thread(this);
         holder = getHolder();
         holder.addCallback(new SurfaceHolder.Callback() {
