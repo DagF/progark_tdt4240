@@ -28,8 +28,13 @@ public class Task4Thread extends Thread{
             startTime = System.currentTimeMillis();
             try {
                 c = view.getHolder().lockCanvas();
-                synchronized (view.getHolder()) {
-                    view.onDraw(c);
+                if( c != null){
+                    synchronized (view.getHolder()) {
+                        view.onDraw(c);
+                    }
+                }
+                else{
+                    this.setRunning(false);
                 }
             } finally {
                 if (c != null) {

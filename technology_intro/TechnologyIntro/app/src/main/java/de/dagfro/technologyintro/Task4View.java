@@ -14,14 +14,13 @@ import android.view.SurfaceView;
  * Created by dagfs on 03-Feb-16.
  */
 public class Task4View extends SurfaceView {
-    private Bitmap bmp;
     private SurfaceHolder holder;
     private Task4Thread task4Thread;
-    private int x = 0;
-    private int xSpeed = 10;
+    private Task4Game task4Game;
 
     public Task4View(Context context) {
         super(context);
+        task4Game = new Task4Game(context);
         task4Thread = new Task4Thread(this);
         holder = getHolder();
         holder.addCallback(new SurfaceHolder.Callback() {
@@ -67,17 +66,7 @@ public class Task4View extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {
         if(canvas != null){
-            if (x >= getWidth() - bmp.getWidth()) {
-                xSpeed = -10;
-                bmp = flip(bmp);
-            }
-            if (x <= 0) {
-                xSpeed = 10;
-                bmp = flip(bmp);
-            }
-            x = x + xSpeed;
-            canvas.drawColor(Color.BLACK);
-            canvas.drawBitmap(bmp, x, 10, null);
+            task4Game.draw(canvas);
         }
 
     }
